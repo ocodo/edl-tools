@@ -60,8 +60,8 @@ def get_edl_media(edl_filename):
             nested_media = get_edl_media(edl)
             for m in nested_media:
                 media.add(m)
-        except RuntimeError as e:
-            print('recursion limit')
+        except RuntimeError:
+            # on recursion limit
             break
 
     return media
