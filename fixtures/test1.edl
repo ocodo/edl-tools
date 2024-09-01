@@ -1,0 +1,7 @@
+# mpv EDL v0
+
+video.mp4
+video1.mp4
+video3.mp4
+!new_stream
+audio.mp3
