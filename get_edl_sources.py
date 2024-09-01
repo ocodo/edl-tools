@@ -6,7 +6,9 @@ import inspect
 def help():
     script = os.path.basename(__file__)
 
-    print(inspect.cleandoc(f'''
+    print(
+        inspect.cleandoc(
+            f"""
     Get .edl sources
 
     Print an unsorted list of unique primary media files
@@ -17,37 +19,39 @@ def help():
     Usage:
 
     python3 {script} <edlfile.edl>
-    '''))
+    """
+        )
+    )
 
 
 def media_filename(line):
-    return line.split(',')[0]
+    return line.split(",")[0]
 
 
 def get_edl_media(edl_filename):
-    '''
+    """
     Open edl_filename and read the contents,
     parse out and return the unique media filenames.
-    '''
+    """
     media = set()
 
     nested_edls = set()
 
-    with open(edl_filename, 'r') as edl_file:
+    with open(edl_filename, "r") as edl_file:
         for line in edl_file:
             line = line.rstrip()
 
             _, ext = os.path.splitext(line)
 
             # Ignore comments and file header
-            if line.startswith('#'):
+            if line.startswith("#"):
                 continue
 
             # Ignore stream commands etc.
-            if line.startswith('!'):
+            if line.startswith("!"):
                 continue
 
-            if ext == '.edl':
+            if ext == ".edl":
                 nested_edls.add(line)
                 continue
 
@@ -66,7 +70,7 @@ def get_edl_media(edl_filename):
     return media
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) != 2:
         help()
         quit()
@@ -74,9 +78,9 @@ if __name__ == '__main__':
     edl = sys.argv[1]
     if os.path.exists(edl):
         filename, ext = os.path.splitext(edl)
-        if ext == '.edl':
-            print('\n'.join(get_edl_media(edl)))
+        if ext == ".edl":
+            print("\n".join(get_edl_media(edl)))
         else:
-            print(f'Not an edl file: {edl}')
+            print(f"Not an edl file: {edl}")
     else:
-        print(f'File not found: {edl}')
+        print(f"File not found: {edl}")
