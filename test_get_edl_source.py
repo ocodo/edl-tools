@@ -10,7 +10,6 @@ def fixture(name):
 
 
 class TestGetEdlMedia(unittest.TestCase):
-
     def test_get_edl_media_exclude_blank(self):
         edl_file = fixture("test1.edl")
         media = get_edl_media(edl_file)
