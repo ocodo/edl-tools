@@ -1,5 +1,7 @@
 # EDL Tools
 
+[![Lint/Test](https://github.com/ocodo/edl-tools/actions/workflows/python-package.yml/badge.svg)](https://github.com/ocodo/edl-tools/actions/workflows/python-package.yml)
+
 Tools for working with mpv `.edl` files
 
 - - -
