@@ -2,6 +2,7 @@ import os
 import sys
 import inspect
 
+
 def help():
     script = os.path.basename(__file__)
 
@@ -18,8 +19,10 @@ def help():
     python3 {script} <edlfile.edl>
     '''))
 
+
 def media_filename(line):
     return line.split(',')[0]
+
 
 def get_edl_media(edl_filename):
     '''
@@ -61,6 +64,7 @@ def get_edl_media(edl_filename):
             break
 
     return media
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:

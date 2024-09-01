@@ -4,8 +4,10 @@ import os
 
 from get_edl_sources import get_edl_media
 
+
 def fixture(name):
     return os.path.join(os.path.dirname(__file__), 'fixtures', name)
+
 
 class TestGetEdlMedia(unittest.TestCase):
 
