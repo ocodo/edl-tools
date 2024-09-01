@@ -23,7 +23,8 @@ If a `.edl` file contains a reference to itself, no problem (cyclic reference pr
 # More tools are planned
 
 - move/copy edl and media
-- rename media and update edl(s)
+- move/copy edl and modify media paths
+- move/rename media and update edl(s)
 - others...?
 
 # Installation
