@@ -1,10 +1,6 @@
-#!/usr/bin/env python3
-
 import os
 import sys
-import shlex
 import inspect
-import mpv
 
 def help():
     script = os.path.basename(__file__)
