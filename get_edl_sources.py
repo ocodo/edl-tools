@@ -36,7 +36,14 @@ def get_edl_media(edl_filename, working_directory=None):
     media = set()
     nested_edls = set()
 
-    with open(edl_filename, "r") as edl_file:
+    if os.path.exists(edl_filename):
+        edl_path = edl_filename
+
+    if working_directory:
+        if os.path.exists(os.path.join(working_directory, edl_filename)):
+            edl_path = os.path.join(working_directory, edl_filename)
+
+    with open(edl_path, "r") as edl_file:
         for line in edl_file:
             line = line.rstrip()
 
@@ -59,7 +66,7 @@ def get_edl_media(edl_filename, working_directory=None):
 
     for edl in nested_edls:
         try:
-            nested_media = get_edl_media(edl)
+            nested_media = get_edl_media(edl, working_directory)
             for m in nested_media:
                 media.add(m)
         except RuntimeError:
@@ -70,13 +77,13 @@ def get_edl_media(edl_filename, working_directory=None):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         help()
         quit()
 
     edl = sys.argv[1]
 
-    if sys.argv[2]:
+    if len(sys.argv) == 3:
         working_directory = sys.argv[2]
     else:
         working_directory = os.path.dirname(edl)
