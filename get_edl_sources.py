@@ -28,13 +28,12 @@ def media_filename(line):
     return line.split(",")[0]
 
 
-def get_edl_media(edl_filename):
+def get_edl_media(edl_filename, working_directory=None):
     """
     Open edl_filename and read the contents,
     parse out and return the unique media filenames.
     """
     media = set()
-
     nested_edls = set()
 
     with open(edl_filename, "r") as edl_file:
@@ -76,10 +75,16 @@ if __name__ == "__main__":
         quit()
 
     edl = sys.argv[1]
+
+    if sys.argv[2]:
+        working_directory = sys.argv[2]
+    else:
+        working_directory = os.path.dirname(edl)
+
     if os.path.exists(edl):
         filename, ext = os.path.splitext(edl)
         if ext == ".edl":
-            print("\n".join(get_edl_media(edl)))
+            print("\n".join(get_edl_media(edl, working_directory)))
         else:
             print(f"Not an edl file: {edl}")
     else:

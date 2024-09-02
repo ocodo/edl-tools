@@ -39,7 +39,7 @@ class TestGetEdlMedia(unittest.TestCase):
 
     def test_get_edl_media_recursive(self):
         edl_file = fixture("test2.edl")
-        media = get_edl_media(edl_file)
+        media = get_edl_media(edl_file, )
 
         self.assertNotIn("fixtures/test1.edl", media)
         self.assertIn("video5.mp4", media)
