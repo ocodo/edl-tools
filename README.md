@@ -20,11 +20,12 @@ If a `.edl` file contains a reference to itself, no problem (cyclic reference pr
 
 - - -
 
-# More tools are planned
+# More tools to come
 
 - move/copy edl and media
 - move/copy edl and modify media paths
 - move/rename media and update edl(s)
+- list nested edls
 - others...?
 
 # Installation
